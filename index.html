@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formül Atölyesi — Yakında</title>
+  <meta name="description" content="Formül Atölyesi yakında hizmetinizde. Eğitim, rehberler, şablonlar ve dijital çözümler için yakında buradayız." />
+
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muter: rgba(255,255,255,.55);
+      --accent: #ff7a18;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{
+      min-height:100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(900px 500px at 15% 20%, rgba(255,122,24,.18), transparent 60%),
+        radial-gradient(900px 600px at 50% 100%, rgba(255,255,255,.06), transparent 70%),
+        var(--bg);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 28px 16px;
+    }
+
+    .wrap{ width: min(980px, 100%); display:grid; gap: 18px; }
+
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:12px; opacity:.95;
+    }
+
+    .brand{ display:flex; align-items:center; gap:12px; }
+
+    .logo{
+      width:44px; height:44px; border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid rgba(255,255,255,.20);
+      box-shadow: var(--shadow);
+      display:grid; place-items:center;
+      font-weight:900; letter-spacing:.5px;
+      color:#0b1020;
+      user-select:none;
+    }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      white-space:nowrap;
+    }
+
+    .dot{
+      width:8px; height:8px; border-radius:99px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34,197,94,.18);
+    }
+
+    .grid{ display:grid; grid-template-columns: 1.2fr .8fr; gap: 18px; }
+    @media (max-width: 860px){ .grid{ grid-template-columns: 1fr; } }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      backdrop-filter: blur(10px);
+    }
+
+    h1{
+      font-size: clamp(28px, 3.5vw, 44px);
+      line-height: 1.05;
+      letter-spacing: -0.6px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle{
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+      max-width: 62ch;
+    }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      margin: 14px 0 18px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,122,24,.35);
+      background: rgba(255,122,24,.10);
+      color: rgba(255,255,255,.86);
+      font-size: 13px;
+    }
+
+    .features{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    @media (max-width: 520px){ .features{ grid-template-columns: 1fr; } }
+
+    .feat{
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,.12);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .feat b{ display:block; margin-bottom: 6px; letter-spacing: -.2px; }
+    .feat p{ color: var(--muter); font-size: 14px; line-height: 1.45; }
+
+    .actions{
+      display:flex; flex-wrap:wrap; gap: 10px;
+      margin-top: 18px;
+    }
+
+    .btn{
+      appearance:none; border:none; cursor:pointer;
+      text-decoration:none;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight: 650;
+      letter-spacing: .1px;
+      transition: transform .12s ease, filter .12s ease, background .12s ease;
+      user-select:none;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .btn.primary{
+      background: linear-gradient(135deg, var(--accent), #ffb703);
+      color:#10131f;
+    }
+    .btn.ghost{
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn:hover{ filter: brightness(1.08); }
+
+    .side h2{ font-size: 18px; margin-bottom: 10px; letter-spacing: -.2px; }
+
+    label{ display:block; color: var(--muted); font-size: 13px; margin: 10px 0 6px; }
+
+    input, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,.18);
+      color: var(--text);
+      outline:none;
+    }
+    textarea{ min-height: 92px; resize: vertical; }
+
+    .hint{ color: var(--muter); font-size: 12px; margin-top: 8px; line-height: 1.4; }
+
+    footer{ color: var(--muter); font-size: 12px; text-align:center; margin-top: 4px; }
+
+    .mini{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-top: 12px; padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      color: var(--muter);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">FA</div>
+        <div>
+          <div style="font-weight:800; letter-spacing:-.2px;">Formül Atölyesi</div>
+          <div style="color: var(--muter); font-size: 12px;">Yakında hizmetinizde</div>
+        </div>
+      </div>
+
+      <div class="pill">
+        <span class="dot" aria-hidden="true"></span>
+        Site hazırlanıyor • 2026
+      </div>
+    </div>
+
+    <section class="grid">
+      <div class="card">
+        <h1>Formül Atölyesi<br/>yakında hizmetinizde.</h1>
+        <p class="subtitle">
+          Öğrenmeyi ve üretmeyi “formül gibi” netleştiren bir atölye:
+          eğitim içerikleri, pratik içecekler, basit çözümler...
+        </p>
+
+        <div class="badge">
+          ⏳ Şu an hazırlık aşamasındayız — istersen önerini/isteğini ilet.
+        </div>
+
+        <div class="features">
+          <div class="feat">
+            <b>📚 Eğitim & Rehberler</b>
+            <p>Kısa, anlaşılır ve uygulamalı anlatım. Notlar, örnekler, şablonlar...</p>
+          </div>
+          <div class="feat">
+            <b>🧩 İçerik</b>
+            <p>Premixler, şuruplar ve menü desteği...</p>
+          </div>
+          <div class="feat">
+            <b>🎥 İçerik Üretimi</b>
+            <p>Herkesin içecek üretmesini sağlamak...</p>
+          </div>
+          <div class="feat">
+            <b>🤝 Danışmanlık</b>
+            <p>İhtiyacına göre sade yol haritası: nereden başlayalım, nasıl büyütelim...</p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn primary"
+             href="mailto:erkankazdal@outlook.com?subject=Form%C3%BCl%20At%C3%B6lyesi%20Hakk%C4%B1nda&body=Merhaba,%20Form%C3%BCl%20At%C3%B6lyesi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+             aria-label="E-posta gönder">
+            E-posta gönder
+          </a>
+
+          <a class="btn ghost"
+             href="https://www.linkedin.com/in/erkan-kazdal/"
+             target="_blank" rel="noopener"
+             aria-label="LinkedIn profilini aç">
+            LinkedIn
+          </a>
+        </div>
+
+        <div class="mini">
+          <span>🔒 Sade “yakında” sayfası</span>
+          <span>formulatolyesi.com</span>
+        </div>
+      </div>
+
+      <aside class="card side">
+        <h2>Haber verelim mi?</h2>
+        <p style="color: var(--muted); font-size: 14px; line-height:1.5;">
+          E-posta bırak; açılışta tek mesajla haber edelim.
+          (Şimdilik bu form mail uygulamanı açar.)
+        </p>
+
+        <form id="notifyForm">
+          <label for="email">E-posta</label>
+          <input id="email" type="email" placeholder="ornek@mail.com" required />
+
+          <label for="note">Ne görmek istersin? (opsiyonel)</label>
+          <textarea id="note" placeholder="Örn: eğitim içerikleri, kokteyller, kahveler, şurup, premixler..."></textarea>
+
+          <div class="actions" style="margin-top:14px;">
+            <button class="btn primary" type="submit">Gönder</button>
+            <button class="btn ghost" type="button" onclick="document.getElementById('notifyForm').reset()">Temizle</button>
+          </div>
+
+          <div class="hint">
+            
+          </div>
+        </form>
+      </aside>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Formül Atölyesi • İletişim: erkankazdal@outlook.com
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Form -> mailto (backend yok)
+    document.getElementById("notifyForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const note  = document.getElementById("note").value.trim();
+
+      const subject = encodeURIComponent("Formül Atölyesi — Açılışta Haber Ver");
+      const body = encodeURIComponent(
+        "Merhaba,\n\nAçılışta haber verilmesini istiyorum.\n\nE-posta: " + email +
+        (note ? "\n\nİstek/Not: " + note : "") +
+        "\n\nTeşekkürler."
+      );
+
+      window.location.href = `mailto:erkankazdal@outlook.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
